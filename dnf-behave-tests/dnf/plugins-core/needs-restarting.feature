@@ -33,6 +33,7 @@ Scenario: Update core packages
           More information: https://access.redhat.com/solutions/27943
           """
 
+@debug
 @bz1913962
 Scenario: Install a package with an associated reboot_suggested advisory
     Given I execute dnf with args "upgrade --advisory=FEDORA-2999:003-03 \*"
