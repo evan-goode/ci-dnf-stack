@@ -10,7 +10,7 @@ Background:
       And I use repository "dnf-ci-fedora"
       And I move the clock backward to "before boot-up"
       And I execute dnf with args "install lame kernel basesystem glibc wget lz4"
-      And I move the clock forward to "2 hours"
+      And I move the clock forward to "48 hours"
       And I use repository "dnf-ci-fedora-updates"
 
 @bz1913962
@@ -18,7 +18,7 @@ Scenario: Update core packages
     Given I execute dnf with args "upgrade kernel basesystem"
       And I execute dnf with args "upgrade glibc"
       And I execute dnf with args "upgrade lame wget"
-      And I move the clock forward to "2 hours"
+      And I move the clock forward to "96 hours"
      When I execute dnf with args "needs-restarting"
       Then the exit code is 1
       And stdout is
@@ -37,7 +37,7 @@ Scenario: Update core packages
 @bz1913962
 Scenario: Install a package with an associated reboot_suggested advisory
     Given I execute dnf with args "upgrade --advisory=FEDORA-2999:003-03 \*"
-      And I move the clock forward to "3 hours"
+      And I move the clock forward to "96 hours"
      When I execute dnf with args "needs-restarting"
       Then the exit code is 1
       And stdout is
