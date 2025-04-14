@@ -7,7 +7,7 @@ Background: Enable repositories
   Given I use repository "simple-base"
 
 @reboot_count_1
-Scenario: Install a package using --transient on a bootc system
+Scenario: Install a package using --transient on a bootc system (edited)
   When I execute dnf with args "install labirinto --transient"
   Then the exit code is 0
    And Transaction is following
