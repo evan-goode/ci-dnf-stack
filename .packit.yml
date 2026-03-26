@@ -4,8 +4,10 @@
 jobs:
   - job: tests
     trigger: pull_request
+    identifier: "dnf-tests"
     targets:
+      - fedora-all
       - centos-stream-9-x86_64
       - centos-stream-10-x86_64
-    manual_trigger: true
     skip_build: true
+    tmt_plan: "^/plans/integration/behave-dnf$"
