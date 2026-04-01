@@ -3,7 +3,8 @@ tag: dnf
 
 provision:
   how: virtual
-  image: https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-latest.x86_64.qcow2
+  # Can be overridden with `tmt ... -image $URL` or via Packit's `tf_extra_params`
+  image: https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-GenericCloud-10-latest.x86_64.qcow2
 
 prepare:
 - how: install

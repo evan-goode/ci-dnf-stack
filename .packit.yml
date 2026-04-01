@@ -4,8 +4,41 @@
 jobs:
   - job: tests
     trigger: pull_request
+    identifier: "behave-dnf"
     targets:
+      - fedora-all
       - centos-stream-9-x86_64
       - centos-stream-10-x86_64
-    manual_trigger: true
     skip_build: true
+    tmt_plan: "^/plans/integration/behave-dnf$"
+
+jobs:
+  - job: tests
+    trigger: pull_request
+    identifier: "behave-dnf-bootc-c9s"
+    targets:
+      - centos-stream-9-x86_64
+    skip_build: true
+    tmt_plan: "^/plans/integration/behave-dnf-bootc$"
+    tf_extra_params:
+      environments:
+      - artifacts: []
+        tmt:
+          context:
+            image: "https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-latest.x86_64.qcow2"
+
+jobs:
+  - job: tests
+    trigger: pull_request
+    identifier: "behave-dnf-bootc-c10s"
+    targets:
+      - centos-stream-10-x86_64
+    skip_build: true
+    tmt_plan: "^/plans/integration/behave-dnf-bootc$"
+    tf_extra_params:
+      environments:
+      - artifacts: []
+        tmt:
+          context:
+            image: "https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-GenericCloud-10-latest.x86_64.qcow2"
+
