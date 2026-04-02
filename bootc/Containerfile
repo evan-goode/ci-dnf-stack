@@ -20,6 +20,13 @@ RUN update-ca-trust
 # Copy extra repo files
 COPY ./repos.d/ /etc/yum.repos.d/
 
+# enable EPEL on CentOS Stream and RHEL
+RUN set -x && \
+    . /etc/os-release && \
+    if [ "$ID" = "centos" ] || [ "$ID" = "rhel" ]; then \
+        dnf -y install epel-release; \
+    fi
+
 RUN set -x && \
     dnf -y install dnf-plugins-core; \
     dnf -y copr enable rpmsoftwaremanagement/test-utils;

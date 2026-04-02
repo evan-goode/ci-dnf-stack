@@ -20,6 +20,13 @@ RUN update-ca-trust
 # Copy extra repo files
 COPY ./repos.d/ /etc/yum.repos.d/
 
+# enable EPEL on CentOS Stream and RHEL
+RUN set -x && \
+    . /etc/os-release && \
+    if [ "$ID" = "centos" ] || [ "$ID" = "rhel" ]; then \
+        dnf -y install epel-release; \
+    fi
+
 # enable the test-utils repo
 RUN set -x && \
     dnf -y --refresh upgrade; \
