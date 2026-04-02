@@ -16,10 +16,8 @@ prepare:
 execute:
   how: tmt
 
-/test-01-transient:
-  summary: Test DNF transient mode (--transient, persistence=transient)
-  discover:
-    how: fmf
-    test:
-    - /tmt/tests/test-00-bootc-install
-    - /tmt/tests/test-01-transient
+discover:
+  how: fmf
+  test:
+  - /tmt/tests/test-00-bootc-install
+  - /tmt/tests/test-01-transient

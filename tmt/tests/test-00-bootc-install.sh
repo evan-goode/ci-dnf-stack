@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -exuo pipefail
 
+echo Testing packit
+
 if [ "$TMT_REBOOT_COUNT" -eq 0 ]; then
     BOOTC_TEMPDIR=$(mktemp -d)
     trap 'rm -rf -- "$BOOTC_TEMPDIR"' EXIT
